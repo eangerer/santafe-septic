@@ -49,9 +49,24 @@ import { breadcrumbSchema, localBusinessSchema } from '../../lib/schema';
       <div>
         <h2 class="font-display text-2xl font-bold text-teal">Request a Callback</h2>
         <p class="mt-2 text-sm text-ink-soft">
-          Wire this form to Formspree, Netlify Forms, or your CRM before launch.
+          Send your details and we’ll follow up about pumping, repair, inspection, or install help.
         </p>
-        <form class="mt-6 space-y-4" method="POST" action="#" onsubmit="return false;">
+        <form
+          class="mt-6 space-y-4"
+          method="POST"
+          action={site.formspreeEndpoint}
+          accept-charset="UTF-8"
+        >
+          <input type="hidden" name="_subject" value="Santa Fe Septic — service request" />
+          <!-- Formspree honeypot -->
+          <input
+            type="text"
+            name="_gotcha"
+            tabindex="-1"
+            autocomplete="off"
+            class="hidden"
+            aria-hidden="true"
+          />
           <label class="block">
             <span class="text-sm font-medium text-teal">Name</span>
             <input
@@ -67,6 +82,14 @@ import { breadcrumbSchema, localBusinessSchema } from '../../lib/schema';
               type="tel"
               name="phone"
               required
+              class="mt-1 w-full rounded-lg border border-teal/20 bg-sand px-3 py-2.5 text-teal outline-none ring-gold focus:ring-2"
+            />
+          </label>
+          <label class="block">
+            <span class="text-sm font-medium text-teal">Email</span>
+            <input
+              type="email"
+              name="email"
               class="mt-1 w-full rounded-lg border border-teal/20 bg-sand px-3 py-2.5 text-teal outline-none ring-gold focus:ring-2"
             />
           </label>

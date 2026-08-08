@@ -4,12 +4,12 @@ export const site = {
   url: 'https://santafeseptic.com',
   email: 'hello@santafeseptic.com',
   contactHref: '/contact/',
+  formspreeEndpoint: 'https://formspree.io/f/xrpzeakk',
   city: 'Santa Fe',
   state: 'NM',
   region: 'Santa Fe County',
   tagline: 'Local Care ◆ Clean Solutions',
   brandLine: 'Septic care you can count on.',
-  /** Replace with CallRail / network tracking number before launch */
   hours: 'Open 7 days · Emergency response available',
 };
 
