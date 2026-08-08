@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { site } from '../../data/site';
+import { breadcrumbSchema, localBusinessSchema } from '../../lib/schema';
+---
+
+<BaseLayout
+  title={`About | ${site.name}`}
+  description="Santa Fe Septic — local pumping, repair, inspection, and installation focused on Santa Fe County."
+  schema={[
+    localBusinessSchema(),
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'About', path: '/about/' },
+    ]),
+  ]}
+>
+  <PageHero
+    title="Santa Fe septic pros near you—not a random national queue"
+    lede="We built this site around Santa Fe County realities: off-sewer lots, older systems, and permitted new installs. When you search septic near me, you should reach someone who covers your roads."
+    eyebrow="About"
+  />
+
+  <section class="mx-auto max-w-3xl px-4 py-14 sm:px-6 lg:px-8">
+    <div class="space-y-5 text-base leading-relaxed text-ink-soft sm:text-lg">
+      <p>
+        {site.name} exists for homeowners, second-home owners, and property managers who need
+        straightforward septic help — pump-outs on a sensible schedule, repairs when something
+        fails, inspections before closing, and installs when it’s time to replace.
+      </p>
+      <p>
+        Santa Fe isn’t a coastal sewer grid. A lot of the county runs on tanks and drainfields.
+        Content and service areas on this site reflect that — Eldorado, Tesuque, Agua Fria, and
+        the broader county — not a copy-paste list of every city in New Mexico.
+      </p>
+      <p>
+        Ready to book? <a class="font-semibold text-water underline-offset-2 hover:underline" href={site.contactHref}>Request service</a> on the contact page.
+      </p>
+    </div>
+  </section>
+
+  <CtaBand />
+</BaseLayout>

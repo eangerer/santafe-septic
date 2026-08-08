@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+/* Santa Fe Septic brand system */
+@theme {
+  --font-display: "Lora", Georgia, "Times New Roman", serif;
+  --font-sans: "Source Sans 3", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-logo: "Pacifico", "Segoe Script", cursive;
+
+  --color-teal: #123f3a;
+  --color-teal-deep: #0d2e2a;
+  --color-teal-soft: #1a524b;
+  --color-sand: #f4efe3;
+  --color-sand-deep: #e5dcc8;
+  --color-clay: #c86a44;
+  --color-clay-bright: #d47852;
+  --color-gold: #e0b13b;
+  --color-ink: #123f3a;
+  --color-ink-soft: #2a524c;
+  --color-muted: #5c736e;
+
+  /* Aliases so existing utility classes keep working */
+  --color-juniper: #123f3a;
+  --color-juniper-deep: #0d2e2a;
+  --color-sage: #5c736e;
+  --color-water: #1a524b;
+  --color-water-bright: #2a6b62;
+  --color-bone: #f4efe3;
+  --color-bone-warm: #ebe4d4;
+  --color-call: #c86a44;
+  --color-call-bright: #d47852;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-sand text-ink font-sans antialiased;
+    background-color: var(--color-sand);
+    background-image:
+      radial-gradient(ellipse 100% 60% at 100% 0%, rgba(224, 177, 59, 0.08), transparent 50%),
+      radial-gradient(ellipse 80% 50% at 0% 100%, rgba(200, 106, 68, 0.06), transparent 45%);
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-gold) 45%, white);
+    color: var(--color-teal);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-lg bg-teal px-5 py-3 text-base font-semibold text-sand transition hover:bg-teal-deep;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-lg border border-teal/25 bg-sand px-5 py-3 text-base font-semibold text-teal transition hover:bg-sand-deep;
+  }
+
+  .btn-ghost-light {
+    @apply inline-flex items-center justify-center rounded-lg border border-sand/50 bg-transparent px-5 py-3 text-base font-semibold text-sand transition hover:bg-sand/10;
+  }
+
+  .btn-on-teal {
+    @apply inline-flex items-center justify-center rounded-lg bg-sand px-5 py-3 text-base font-semibold text-teal transition hover:bg-white;
+  }
+
+  .link-tertiary {
+    @apply font-semibold text-teal transition hover:text-clay;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-logo {
+    font-family: var(--font-logo);
+  }
+
+  .reveal {
+    animation: reveal-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .reveal-delay-1 {
+    animation-delay: 0.12s;
+  }
+
+  .reveal-delay-2 {
+    animation-delay: 0.24s;
+  }
+
+  .reveal-delay-3 {
+    animation-delay: 0.36s;
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-gold) 50%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 12px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+.cta-pulse {
+  animation: pulse-ring 2.6s ease-out infinite;
+}

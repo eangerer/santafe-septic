@@ -1,0 +1,5 @@
+# Cloudflare Pages — static Astro output in /dist
+# Docs: https://developers.cloudflare.com/pages/
+name = "santafe-septic"
+compatibility_date = "2026-08-07"
+pages_build_output_dir = "dist"

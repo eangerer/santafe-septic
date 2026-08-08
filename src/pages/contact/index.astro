@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { site } from '../../data/site';
+import { breadcrumbSchema, localBusinessSchema } from '../../lib/schema';
+---
+
+<BaseLayout
+  title={`Contact | ${site.name}`}
+  description="Contact Santa Fe Septic for pumping, repair, inspection, or installation. Request a callback online."
+  schema={[
+    localBusinessSchema(),
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'Contact', path: '/contact/' },
+    ]),
+  ]}
+>
+  <PageHero
+    title="Request a callback"
+    lede="Share your address and what’s going on—especially for alarms and backups. We’ll follow up to get a local tech moving."
+    eyebrow="Contact"
+  />
+
+  <section class="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
+    <div class="grid gap-12 lg:grid-cols-2">
+      <div>
+        <h2 class="font-display text-2xl font-bold text-teal">Talk to us</h2>
+        <dl class="mt-6 space-y-5 text-base">
+          <div>
+            <dt class="text-xs font-bold uppercase tracking-[0.18em] text-clay">Email</dt>
+            <dd class="mt-1">
+              <a class="font-medium text-teal hover:text-clay" href={`mailto:${site.email}`}>
+                {site.email}
+              </a>
+            </dd>
+          </div>
+          <div>
+            <dt class="text-xs font-bold uppercase tracking-[0.18em] text-clay">Hours</dt>
+            <dd class="mt-1 text-ink-soft">{site.hours}</dd>
+          </div>
+          <div>
+            <dt class="text-xs font-bold uppercase tracking-[0.18em] text-clay">Area</dt>
+            <dd class="mt-1 text-ink-soft">Santa Fe &amp; Santa Fe County, New Mexico</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div>
+        <h2 class="font-display text-2xl font-bold text-teal">Request a Callback</h2>
+        <p class="mt-2 text-sm text-ink-soft">
+          Wire this form to Formspree, Netlify Forms, or your CRM before launch.
+        </p>
+        <form class="mt-6 space-y-4" method="POST" action="#" onsubmit="return false;">
+          <label class="block">
+            <span class="text-sm font-medium text-teal">Name</span>
+            <input
+              type="text"
+              name="name"
+              required
+              class="mt-1 w-full rounded-lg border border-teal/20 bg-sand px-3 py-2.5 text-teal outline-none ring-gold focus:ring-2"
+            />
+          </label>
+          <label class="block">
+            <span class="text-sm font-medium text-teal">Phone</span>
+            <input
+              type="tel"
+              name="phone"
+              required
+              class="mt-1 w-full rounded-lg border border-teal/20 bg-sand px-3 py-2.5 text-teal outline-none ring-gold focus:ring-2"
+            />
+          </label>
+          <label class="block">
+            <span class="text-sm font-medium text-teal">Service needed</span>
+            <select
+              name="service"
+              class="mt-1 w-full rounded-lg border border-teal/20 bg-sand px-3 py-2.5 text-teal outline-none ring-gold focus:ring-2"
+            >
+              <option>Pumping</option>
+              <option>Repair</option>
+              <option>Installation</option>
+              <option>Drainfield</option>
+              <option>Inspection</option>
+              <option>Emergency</option>
+            </select>
+          </label>
+          <label class="block">
+            <span class="text-sm font-medium text-teal">Message</span>
+            <textarea
+              name="message"
+              rows="4"
+              class="mt-1 w-full rounded-lg border border-teal/20 bg-sand px-3 py-2.5 text-teal outline-none ring-gold focus:ring-2"
+            ></textarea>
+          </label>
+          <button type="submit" class="btn-primary w-full sm:w-auto">
+            Send request
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

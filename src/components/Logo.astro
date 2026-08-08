@@ -1,0 +1,52 @@
+---
+interface Props {
+  variant?: 'teal' | 'sand';
+  class?: string;
+  showTagline?: boolean;
+}
+
+const { variant = 'teal', class: className = '', showTagline = true } = Astro.props;
+const stroke = variant === 'sand' ? '#F4EFE3' : '#123F3A';
+const textClass = variant === 'sand' ? 'text-sand' : 'text-teal';
+const tagClass = variant === 'sand' ? 'text-sand/75' : 'text-muted';
+---
+
+<a href="/" class:list={['inline-flex flex-col items-start leading-none', className]} aria-label="Santa Fe Septic home">
+  <svg
+    class="h-7 w-auto sm:h-8"
+    viewBox="0 0 120 40"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <!-- Sun -->
+    <circle cx="60" cy="10" r="5" stroke={stroke} stroke-width="1.6" />
+    <path
+      d="M60 2v2.2M60 15.8V18M52 10h2.2M65.8 10H68M54.2 4.2l1.5 1.5M64.3 14.3l1.5 1.5M54.2 15.8l1.5-1.5M64.3 5.7l1.5-1.5"
+      stroke={stroke}
+      stroke-width="1.4"
+      stroke-linecap="round"></path>
+    <!-- Adobe skyline -->
+    <path
+      d="M28 28V20h8v-5h10v5h6v-7h12v7h7v-4h11v12H28z"
+      stroke={stroke}
+      stroke-width="1.6"
+      stroke-linejoin="round"></path>
+    <path d="M40 28v-4M52 28v-5M66 28v-4M78 28v-6" stroke={stroke} stroke-width="1.4"></path>
+  </svg>
+  <span class:list={['font-logo text-[1.35rem] sm:text-[1.55rem] tracking-wide', textClass]}>
+    Santa Fe Septic
+  </span>
+  {
+    showTagline && (
+      <span
+        class:list={[
+          'mt-1 text-[0.62rem] font-semibold uppercase tracking-[0.16em]',
+          tagClass,
+        ]}
+      >
+        Local Care <span aria-hidden="true">◆</span> Clean Solutions
+      </span>
+    )
+  }
+</a>

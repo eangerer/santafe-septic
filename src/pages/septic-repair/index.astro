@@ -1,0 +1,8 @@
+---
+import ServicePageView from '../../components/ServicePageView.astro';
+import { getService } from '../../data/services';
+
+const service = getService('septic-repair')!;
+---
+
+<ServicePageView service={service} />

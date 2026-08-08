@@ -1,0 +1,39 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+  title: string;
+  lede: string;
+  eyebrow?: string;
+}
+
+const { title, lede, eyebrow } = Astro.props;
+---
+
+<section class="relative overflow-hidden bg-teal">
+  <div
+    class="pointer-events-none absolute -right-10 top-0 h-48 w-48 rounded-full bg-gold/15 blur-3xl"
+    aria-hidden="true"
+  >
+  </div>
+  <div class="relative mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+    {
+      eyebrow && (
+        <p class="reveal text-xs font-bold uppercase tracking-[0.22em] text-gold">{eyebrow}</p>
+      )
+    }
+    <p class="reveal reveal-delay-1 mt-2 font-logo text-2xl text-sand sm:text-3xl">{site.name}</p>
+    <h1
+      class="reveal reveal-delay-2 mt-4 max-w-3xl font-display text-3xl font-bold tracking-tight text-sand sm:text-4xl"
+    >
+      {title}
+    </h1>
+    <p class="reveal reveal-delay-3 mt-4 max-w-2xl text-base leading-relaxed text-sand/80 sm:text-lg">
+      {lede}
+    </p>
+    <div class="reveal reveal-delay-3 mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+      <a href={site.contactHref} class="btn-on-teal cta-pulse">Request Service</a>
+      <p class="text-sm text-sand/65">{site.hours}</p>
+    </div>
+  </div>
+</section>

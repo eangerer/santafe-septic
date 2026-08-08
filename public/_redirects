@@ -1,0 +1,10 @@
+# Cloudflare Pages — keep trailing-slash URLs canonical
+/septic-pumping /septic-pumping/ 301
+/septic-repair /septic-repair/ 301
+/septic-installation /septic-installation/ 301
+/drainfield-repair /drainfield-repair/ 301
+/septic-inspection /septic-inspection/ 301
+/emergency-septic /emergency-septic/ 301
+/service-areas /service-areas/ 301
+/about /about/ 301
+/contact /contact/ 301

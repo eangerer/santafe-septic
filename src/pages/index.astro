@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HomeHero from '../components/HomeHero.astro';
+import BrandBadges from '../components/BrandBadges.astro';
+import BrandIcons from '../components/BrandIcons.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Faq from '../components/Faq.astro';
+import { homeSeo } from '../data/seo';
+import { areas, homeFaqs, services } from '../data/site';
+import { faqSchema, localBusinessSchema } from '../lib/schema';
+---
+
+<BaseLayout
+  title={homeSeo.title}
+  description={homeSeo.description}
+  schema={[localBusinessSchema(), faqSchema(homeFaqs)]}
+>
+  <HomeHero />
+  <BrandBadges />
+
+  <section id="services" class="mx-auto max-w-6xl scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8">
+    <div class="max-w-2xl">
+      <h2 class="font-display text-3xl font-bold tracking-tight text-teal sm:text-4xl">
+        {homeSeo.secondaryH2}
+      </h2>
+      <p class="mt-4 text-lg leading-relaxed text-ink-soft">
+        Most “septic near me” calls are pumping, repair, or a backed-up emergency. Pick the service
+        that matches—or just call and we’ll route it.
+      </p>
+    </div>
+
+    <ul class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        services.map((service) => (
+          <li>
+            <a href={service.href} class="group block h-full border-b border-teal/10 pb-5 transition hover:border-clay">
+              <span class="inline-flex text-teal group-hover:text-clay">
+                <BrandIcons name={service.icon} class="h-7 w-7" />
+              </span>
+              <h3 class="mt-3 text-lg font-semibold text-teal group-hover:text-clay">
+                {service.title} near you
+              </h3>
+              <p class="mt-2 text-sm leading-relaxed text-ink-soft">{service.short}</p>
+              <span class="link-tertiary mt-4 inline-block text-sm">Learn more →</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="border-y border-teal/10 bg-sand-deep/40">
+    <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+        <div>
+          <h2 class="font-display text-3xl font-bold tracking-tight text-teal sm:text-4xl">
+            Septic service near you in Santa Fe County
+          </h2>
+          <p class="mt-4 max-w-xl text-lg leading-relaxed text-ink-soft">
+            Off city sewer? You’re who we built this for—Eldorado, Tesuque, Agua Fria, and county
+            roads where “near me” actually means a local tank and drainfield.
+          </p>
+        </div>
+        <ul class="space-y-4">
+          {
+            areas.map((area) => (
+              <li>
+                <a
+                  href={area.href}
+                  class="group flex items-baseline justify-between gap-4 border-b border-teal/10 pb-3"
+                >
+                  <span class="font-semibold text-teal group-hover:text-clay">
+                    Septic near me in {area.name}
+                  </span>
+                  <span class="text-sm text-muted">Area →</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+    <h2 class="font-display text-3xl font-bold tracking-tight text-teal sm:text-4xl">
+      What happens when you call
+    </h2>
+    <ol class="mt-10 grid gap-8 md:grid-cols-3">
+      <li>
+        <p class="font-display text-4xl font-bold text-clay/80">01</p>
+        <h3 class="mt-3 text-lg font-semibold text-teal">Tell us the problem + ZIP</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-soft">
+          Pumping, alarm, sale inspection, or new install—we confirm we cover your part of Santa Fe
+          County.
+        </p>
+      </li>
+      <li>
+        <p class="font-display text-4xl font-bold text-clay/80">02</p>
+        <h3 class="mt-3 text-lg font-semibold text-teal">We connect a local pro</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-soft">
+          A licensed septic tech gets your address and the job details—no runaround.
+        </p>
+      </li>
+      <li>
+        <p class="font-display text-4xl font-bold text-clay/80">03</p>
+        <h3 class="mt-3 text-lg font-semibold text-teal">They show up and handle it</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-soft">
+          Pump, repair, inspect, or scope an install—then you know the next step in plain language.
+        </p>
+      </li>
+    </ol>
+  </section>
+
+  <section id="reviews" class="scroll-mt-24 border-y border-teal/10 bg-teal">
+    <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+      <h2 class="font-display text-3xl font-bold tracking-tight text-sand sm:text-4xl">
+        Neighbors trust local care
+      </h2>
+      <p class="mt-3 max-w-xl text-sand/75">
+        Real Google reviews go here once the GBP is live. Until then, this spot holds your social
+        proof.
+      </p>
+      <ul class="mt-10 grid gap-6 md:grid-cols-3">
+        {
+          [
+            {
+              quote: 'Showed up when they said they would and explained the tank in plain English.',
+              name: 'Homeowner · Eldorado',
+            },
+            {
+              quote: 'Needed a sale inspection fast—clear report, no drama.',
+              name: 'Seller · Santa Fe',
+            },
+            {
+              quote: 'Alarm at night. They told us what to shut off and got someone out.',
+              name: 'Property manager · Tesuque',
+            },
+          ].map((r) => (
+            <li class="border-t border-sand/20 pt-5">
+              <p class="text-base leading-relaxed text-sand/90">“{r.quote}”</p>
+              <p class="mt-3 text-sm font-semibold text-gold">{r.name}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <Faq items={homeFaqs} id="faqs" />
+  <CtaBand
+    heading="Need septic near you right now?"
+    body="Tell us what’s going on—we’ll get a local tech moving."
+  />
+</BaseLayout>

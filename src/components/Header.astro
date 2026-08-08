@@ -1,0 +1,119 @@
+---
+import Logo from './Logo.astro';
+import { navLinks, site } from '../data/site';
+---
+
+<header class="relative z-50 bg-teal text-sand">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+    <Logo variant="sand" showTagline={false} class="min-w-0" />
+
+    <nav class="hidden items-center gap-1 lg:flex" aria-label="Primary">
+      {
+        navLinks.map((link) =>
+          'children' in link && link.children ? (
+            <div class="group relative">
+              <a
+                href={link.href}
+                class="inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-semibold uppercase tracking-wide text-sand/90 transition hover:bg-sand/10 hover:text-sand"
+              >
+                {link.label}
+                <span class="text-[0.65rem] opacity-70" aria-hidden="true">
+                  ▾
+                </span>
+              </a>
+              <div class="invisible absolute left-0 top-full z-50 min-w-[12rem] translate-y-1 pt-1 opacity-0 transition group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                <ul class="rounded-lg border border-teal-soft bg-sand py-2 shadow-lg shadow-teal-deep/20">
+                  {link.children.map((child) => (
+                    <li>
+                      <a
+                        href={child.href}
+                        class="block px-4 py-2 text-sm font-medium text-teal hover:bg-sand-deep"
+                      >
+                        {child.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ) : (
+            <a
+              href={link.href}
+              class="rounded-md px-3 py-2 text-sm font-semibold uppercase tracking-wide text-sand/90 transition hover:bg-sand/10 hover:text-sand"
+            >
+              {link.label}
+            </a>
+          ),
+        )
+      }
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a href="/contact/" class="btn-on-teal hidden px-4 py-2.5 text-sm sm:inline-flex">
+        Request a Quote
+      </a>
+      <button
+        type="button"
+        id="nav-toggle"
+        class="inline-flex items-center justify-center rounded-md border border-sand/30 px-3 py-2 text-sm font-semibold text-sand lg:hidden"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+      >
+        Menu
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-nav" class="hidden border-t border-sand/15 bg-teal-deep lg:hidden" hidden>
+    <nav class="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-3 sm:px-6" aria-label="Mobile">
+      {
+        navLinks.flatMap((link) =>
+          'children' in link && link.children
+            ? [
+                <p class="px-3 pt-2 text-xs font-bold uppercase tracking-wider text-gold">
+                  {link.label}
+                </p>,
+                ...link.children.map((child) => (
+                  <a
+                    href={child.href}
+                    class="rounded-md px-3 py-2.5 text-base font-medium text-sand hover:bg-sand/10"
+                  >
+                    {child.label}
+                  </a>
+                )),
+              ]
+            : [
+                <a
+                  href={link.href}
+                  class="rounded-md px-3 py-2.5 text-base font-medium text-sand hover:bg-sand/10"
+                >
+                  {link.label}
+                </a>,
+              ],
+        )
+      }
+      <a href="/contact/" class="btn-on-teal mt-2 w-full">Request a Quote</a>
+      <a href={site.contactHref} class="mt-1 rounded-lg bg-clay px-3 py-3 text-center text-base font-bold text-sand">
+        Request Service
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const panel = document.getElementById('mobile-nav');
+  toggle?.addEventListener('click', () => {
+    const open = panel?.hasAttribute('hidden') === false;
+    if (!panel || !toggle) return;
+    if (open) {
+      panel.hidden = true;
+      panel.classList.add('hidden');
+      toggle.setAttribute('aria-expanded', 'false');
+    } else {
+      panel.hidden = false;
+      panel.classList.remove('hidden');
+      toggle.setAttribute('aria-expanded', 'true');
+    }
+  });
+</script>

@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { areas, services, site } from '../../data/site';
+import { breadcrumbSchema, localBusinessSchema } from '../../lib/schema';
+
+export function getStaticPaths() {
+  return areas.map((area) => ({
+    params: { slug: area.slug },
+    props: { area },
+  }));
+}
+
+const { area } = Astro.props;
+const h1 = `Septic Near You in ${area.name}`;
+const metaTitle = `Septic Near Me in ${area.name} | ${site.name}`;
+const description = `Need septic near me in ${area.name}, NM? Call for pumping, repair, and installs. ${area.blurb.slice(0, 80)}`;
+---
+
+<BaseLayout
+  title={metaTitle}
+  description={description.length > 165 ? description.slice(0, 162) + '…' : description}
+  schema={[
+    localBusinessSchema({
+      areaServed: { '@type': 'Place', name: `${area.name}, NM` },
+    }),
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'Service Areas', path: '/service-areas/' },
+      { name: area.name, path: area.href },
+    ]),
+  ]}
+>
+  <Breadcrumbs
+    items={[
+      { name: 'Home', href: '/' },
+      { name: 'Service Areas', href: '/service-areas/' },
+      { name: area.name },
+    ]}
+  />
+
+  <section class="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+    <p class="text-xs font-bold uppercase tracking-[0.22em] text-clay">
+      {area.name} · Santa Fe County
+    </p>
+    <h1
+      class="mt-3 max-w-3xl font-display text-3xl font-bold tracking-tight text-teal sm:text-4xl lg:text-5xl"
+    >
+      {h1}
+    </h1>
+    <p class="mt-4 max-w-2xl text-xl font-bold text-clay">Local techs. Clear next steps.</p>
+    <p class="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft sm:text-lg">
+      {area.blurb} Searching septic near me in {area.name}? Call with your street—we confirm
+      coverage and book pumping, repair, inspection, or install help.
+    </p>
+    <a href={site.contactHref} class="btn-primary cta-pulse mt-8">
+      Request Service
+    </a>
+
+    <h2 class="mt-14 font-display text-2xl font-bold text-teal">
+      Septic services near you in {area.name}
+    </h2>
+    <ul class="mt-6 grid gap-4 sm:grid-cols-2">
+      {
+        services.map((s) => (
+          <li>
+            <a
+              href={s.href}
+              class="block border-b border-teal/10 py-3 font-medium text-teal transition hover:border-clay hover:text-clay"
+            >
+              {s.title} near me
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <CtaBand
+    heading={`Need septic near you in ${area.name}?`}
+    body="Tell us the problem and your ZIP—we’ll confirm coverage."
+  />
+</BaseLayout>

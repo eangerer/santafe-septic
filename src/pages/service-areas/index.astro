@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { areas, site } from '../../data/site';
+import { breadcrumbSchema, localBusinessSchema } from '../../lib/schema';
+
+const title = `Septic Near Me — Service Areas | ${site.name}`;
+const description =
+  'Septic near me across Santa Fe County: Eldorado, Tesuque, Agua Fria, and rural roads. Call with your ZIP for local pumping and repair.';
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  schema={[
+    localBusinessSchema(),
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'Service Areas', path: '/service-areas/' },
+    ]),
+  ]}
+>
+  <Breadcrumbs
+    items={[{ name: 'Home', href: '/' }, { name: 'Service Areas' }]}
+  />
+
+  <section class="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+    <p class="text-xs font-bold uppercase tracking-[0.22em] text-clay">Service areas</p>
+    <h1
+      class="mt-3 max-w-3xl font-display text-3xl font-bold tracking-tight text-teal sm:text-4xl lg:text-5xl"
+    >
+      Septic Near You Across Santa Fe County
+    </h1>
+    <p class="mt-4 max-w-xl text-xl font-bold text-clay">Find your neighborhood.</p>
+    <p class="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft sm:text-lg">
+      Looking for septic near me? We focus on properties that actually run on tanks—not a statewide
+      generic list. Pick your area or call with your address.
+    </p>
+
+    <ul class="mt-12 grid gap-10 md:grid-cols-2">
+      {
+        areas.map((area) => (
+          <li class="border-b border-ink/10 pb-8">
+            <h2 class="font-display text-2xl font-bold text-teal">
+              <a href={area.href} class="hover:text-clay">
+                Septic near me in {area.name}
+              </a>
+            </h2>
+            <p class="mt-3 text-base leading-relaxed text-ink-soft">{area.blurb}</p>
+            <a href={area.href} class="link-tertiary mt-4 inline-block text-sm">
+              {area.name} septic services →
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <CtaBand
+    heading="Not sure if we cover your road?"
+    body="Call with your ZIP—we’ll tell you straight if septic help near you is available."
+  />
+</BaseLayout>
