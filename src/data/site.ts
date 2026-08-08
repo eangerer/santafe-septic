@@ -27,7 +27,6 @@ export const navLinks = [
     ],
   },
   { href: '/about/', label: 'About' },
-  { href: '/#reviews', label: 'Reviews' },
   { href: '/#faqs', label: 'FAQs' },
 ];
 

@@ -112,41 +112,6 @@ import { faqSchema, localBusinessSchema } from '../lib/schema';
     </ol>
   </section>
 
-  <section id="reviews" class="scroll-mt-24 border-y border-teal/10 bg-teal">
-    <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-      <h2 class="font-display text-3xl font-bold tracking-tight text-sand sm:text-4xl">
-        Neighbors trust local care
-      </h2>
-      <p class="mt-3 max-w-xl text-sand/75">
-        Real Google reviews go here once the GBP is live. Until then, this spot holds your social
-        proof.
-      </p>
-      <ul class="mt-10 grid gap-6 md:grid-cols-3">
-        {
-          [
-            {
-              quote: 'Showed up when they said they would and explained the tank in plain English.',
-              name: 'Homeowner · Eldorado',
-            },
-            {
-              quote: 'Needed a sale inspection fast—clear report, no drama.',
-              name: 'Seller · Santa Fe',
-            },
-            {
-              quote: 'Alarm at night. They told us what to shut off and got someone out.',
-              name: 'Property manager · Tesuque',
-            },
-          ].map((r) => (
-            <li class="border-t border-sand/20 pt-5">
-              <p class="text-base leading-relaxed text-sand/90">“{r.quote}”</p>
-              <p class="mt-3 text-sm font-semibold text-gold">{r.name}</p>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </section>
-
   <Faq items={homeFaqs} id="faqs" />
   <CtaBand
     heading="Need septic near you right now?"
