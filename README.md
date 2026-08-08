@@ -58,9 +58,10 @@ Then attach the custom domain in the dashboard on the `santafe-septic` Pages pro
 
 ### After the domain is live
 
-1. Wire the contact form in `src/pages/contact/index.astro`.
+1. Contact form posts to Formspree (`site.formspreeEndpoint` in `src/data/site.ts`).
 2. Confirm `site.url` in `astro.config.mjs` / `src/data/site.ts` matches the live domain (already `https://santafeseptic.com`).
-3. Submit the sitemap / URL in Google Search Console.
+3. In Formspree, allow your live domain (and `*.pages.dev` if testing there).
+4. Submit the sitemap / URL in Google Search Console.
 
 ## Page map
 
