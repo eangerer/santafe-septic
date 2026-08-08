@@ -58,6 +58,7 @@ import { breadcrumbSchema, localBusinessSchema } from '../../lib/schema';
           accept-charset="UTF-8"
         >
           <input type="hidden" name="_subject" value="Santa Fe Septic — service request" />
+          <input type="hidden" name="_next" value={`${site.url}/thank-you/`} />
           <!-- Formspree honeypot -->
           <input
             type="text"

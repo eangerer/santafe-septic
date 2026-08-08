@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title={`Thanks | ${site.name}`}
+  description="We've received your Santa Fe Septic service request and will follow up soon."
+  noIndex={true}
+>
+  <section class="px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+    <div
+      class="relative mx-auto max-w-xl overflow-hidden rounded-2xl border border-teal/10 bg-sand px-6 py-10 shadow-sm shadow-teal/5 sm:px-10 sm:py-12"
+    >
+      <img
+        src="/brand/badge-local-care.png"
+        alt=""
+        width="80"
+        height="80"
+        class="pointer-events-none absolute -right-3 -top-3 h-20 w-20 rounded-full opacity-25 sm:h-24 sm:w-24"
+        loading="lazy"
+        aria-hidden="true"
+      />
+
+      <p class="text-xs font-bold uppercase tracking-[0.22em] text-clay">Request received</p>
+
+      <h1 class="mt-4 font-display text-3xl font-bold tracking-tight text-teal sm:text-4xl">
+        Thanks — we got your request.
+      </h1>
+
+      <p class="mt-4 text-base leading-relaxed text-ink-soft sm:text-lg">
+        We’ve received your septic service request and will follow up as soon as possible. If your
+        situation is urgent, include any important details in your original message so we can better
+        understand what you need.
+      </p>
+
+      <ol class="mt-8 space-y-3 border-t border-teal/10 pt-6">
+        <li class="flex items-start gap-3 text-sm text-teal sm:text-base">
+          <span
+            class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-teal text-[0.7rem] font-bold text-sand"
+            aria-hidden="true"
+          >
+            ✓
+          </span>
+          <span class="font-semibold">Request received</span>
+        </li>
+        <li class="flex items-start gap-3 text-sm text-ink-soft sm:text-base">
+          <span class="mt-0.5 w-5 shrink-0 text-center font-semibold text-clay" aria-hidden="true">
+            →
+          </span>
+          <span>We review your service needs</span>
+        </li>
+        <li class="flex items-start gap-3 text-sm text-ink-soft sm:text-base">
+          <span class="mt-0.5 w-5 shrink-0 text-center font-semibold text-clay" aria-hidden="true">
+            →
+          </span>
+          <span>We follow up with next steps</span>
+        </li>
+      </ol>
+
+      <div class="mt-8 flex flex-col items-start gap-3">
+        <a href="/" class="btn-primary">Back to Santa Fe Septic</a>
+        <a href="/#services" class="link-tertiary text-sm">View Septic Services</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
