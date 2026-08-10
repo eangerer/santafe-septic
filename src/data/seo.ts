@@ -2,12 +2,13 @@ import { site } from './site';
 
 /** Home page SEO — pattern: [trade] near me / near you, blended with brand voice */
 export const homeSeo = {
-  primaryKeyword: 'Septic Near Me',
-  title: `Septic Near Me | ${site.name}`,
+  primaryKeyword: 'Santa Fe Septic Services',
+  /** Under 62 chars; brand once + clear service intent */
+  title: `Santa Fe Septic Services | Pumping & Repair`,
   description:
-    'Need septic near me in Santa Fe County? Call for pumping, repair, and installs in Eldorado, Tesuque, and nearby. We answer and send a local pro.',
+    'Santa Fe septic pumping, repair, inspection, and installs for Eldorado, Tesuque, and Santa Fe County. Request service online—we follow up fast.',
   kicker: 'Local Care ◆ Clean Solutions',
-  /** Single H1 — near-you intent + Santa Fe geo, natural phrasing */
+  /** Single H1 — brand + trust promise */
   h1: 'Santa Fe Septic Services You Can Count On',
   /** Brand-style supporting line */
   subhead: 'Pumping, repair, inspection & new systems for Santa Fe County.',

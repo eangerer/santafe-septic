@@ -49,7 +49,7 @@ const related = services.filter((s) => s.slug !== service.slug).slice(0, 4);
           Intent tier: {service.intentTier}
         </p>
 
-        <!-- Single H1: [Service] Near You, [Modifier] -->
+        <!-- Single H1: Santa Fe–specific service headline -->
         <h1
           class="mt-3 font-display text-3xl font-bold tracking-tight text-teal sm:text-4xl lg:text-5xl"
         >
@@ -86,8 +86,8 @@ const related = services.filter((s) => s.slug !== service.slug).slice(0, 4);
         }
       </ul>
       <p class="mt-8 max-w-2xl text-base leading-relaxed text-ink-soft">
-        Still unsure? Searching “{service.primaryKeyword}” usually means it’s time to talk to a
-        pro—call {site.name} and we’ll tell you if it’s urgent or can wait.
+        Still unsure? If you’re dealing with {service.primaryKeyword}, request service with{' '}
+        {site.name} and we’ll tell you if it’s urgent or can wait.
       </p>
     </div>
   </section>
@@ -101,7 +101,7 @@ const related = services.filter((s) => s.slug !== service.slug).slice(0, 4);
         related.map((s) => (
           <li>
             <a href={s.href} class="link-tertiary text-base">
-              {s.title} near you
+              {s.title} in Santa Fe
             </a>
           </li>
         ))
@@ -110,7 +110,7 @@ const related = services.filter((s) => s.slug !== service.slug).slice(0, 4);
   </section>
 
   <CtaBand
-    heading={`Need ${service.title.toLowerCase()} near you?`}
-    body="Call with your ZIP and what’s going on—we confirm coverage and get a local tech moving."
+    heading={`Need ${service.title.toLowerCase()} in Santa Fe?`}
+    body="Tell us your ZIP and what’s going on—we confirm Santa Fe County coverage and get a local tech moving."
   />
 </BaseLayout>
